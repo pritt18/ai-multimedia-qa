@@ -4,34 +4,30 @@ from dotenv import load_dotenv
 
 from langchain_groq import ChatGroq
 
-from langchain_community.vectorstores import FAISS
-
-from langchain_community.embeddings import HuggingFaceEmbeddings
+from app.services.vector_service import (
+    load_vector_store
+)
 
 
 load_dotenv()
 
 
 llm = ChatGroq(
-    model_name="llama-3.3-70b-versatile",
-    groq_api_key=os.getenv("GROQ_API_KEY")
+    groq_api_key=os.getenv("GROQ_API_KEY"),
+    model_name="llama3-8b-8192"
 )
 
 
-embedding = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
-)
+def ask_question(
+    file_id,
+    question
+):
 
-
-def ask_question(file_id, question):
-
-    vectorstore = FAISS.load_local(
-        f"vectors/{file_id}",
-        embedding,
-        allow_dangerous_deserialization=True
+    vector_store = load_vector_store(
+        file_id
     )
 
-    docs = vectorstore.similarity_search(
+    docs = vector_store.similarity_search(
         question,
         k=3
     )
@@ -41,7 +37,7 @@ def ask_question(file_id, question):
     )
 
     prompt = f"""
-    Answer the question only using the provided context.
+    Answer the question based on the context below.
 
     Context:
     {context}
