@@ -257,11 +257,11 @@ Audio/Video → Whisper Transcription → Timestamp Extraction → FAISS → LLM
 
 ## Chatbot UI
 
-![alt text](Chatbot UI.png)
+![alt text](ChatbotUI.png)
 
 ## Timestamp Search
 
-![alt text](Timestamp Search.png)
+![alt text](TimestampSearch.png)
 
 ---
 
