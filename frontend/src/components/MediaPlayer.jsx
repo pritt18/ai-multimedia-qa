@@ -1,6 +1,4 @@
-import ReactPlayer from "react-player";
-
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 
 function MediaPlayer({
@@ -8,44 +6,42 @@ function MediaPlayer({
   startTime
 }) {
 
-  const playerRef = useRef(null);
-
-  const [playing, setPlaying] =
-    useState(false);
+  const videoRef = useRef(null);
 
 
-  const handleReady = () => {
+  useEffect(() => {
 
-    if (
-      playerRef.current &&
-      typeof playerRef.current.seekTo === "function"
-    ) {
+    if (videoRef.current) {
 
-      playerRef.current.seekTo(
-        startTime,
-        "seconds"
-      );
+      videoRef.current.currentTime =
+        startTime;
 
-      setPlaying(true);
+      videoRef.current.play();
     }
-  };
+
+  }, [startTime]);
 
 
   return (
 
     <div className="mt-6">
 
-      <ReactPlayer
-        ref={playerRef}
-        url={mediaUrl}
-        controls={true}
-        playing={playing}
-        onReady={handleReady}
+      <video
+        ref={videoRef}
+        controls
+        autoPlay
         width="100%"
-        height="80px"
-        volume={1}
-        muted={false}
-      />
+        style={{
+          borderRadius: "10px"
+        }}
+      >
+
+        <source
+          src={mediaUrl}
+          type="video/mp4"
+        />
+
+      </video>
 
       <p className="mt-2 text-sm text-gray-300">
 
