@@ -283,6 +283,16 @@ https://drive.google.com/file/d/1S2IXzugnJpjdB7DYgMg1KzWSwbuz0jQU/view?usp=shari
 
 ---
 
+# Live Deployment
+
+Frontend:
+https://ai-multimedia-qa-ochre.vercel.app
+
+Backend:
+https://ai-multimedia-qa-rbmk.onrender.com/docs
+
+---
+
 # Author
 
 Pritam Gangurde
