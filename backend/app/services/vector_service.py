@@ -5,15 +5,13 @@ from langchain_text_splitters import (
 from langchain_community.vectorstores import FAISS
 
 from langchain_community.embeddings import (
-    HuggingFaceEmbeddings
+    FakeEmbeddings
 )
 
 
-def get_embedding():
-
-    return HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
-    )
+embedding = FakeEmbeddings(
+    size=384
+)
 
 
 def create_vector_store(
@@ -30,8 +28,6 @@ def create_vector_store(
 
     chunks = text_splitter.split_text(text)
 
-    embedding = get_embedding()
-
     vector_store = FAISS.from_texts(
         chunks,
         embedding
@@ -45,8 +41,6 @@ def create_vector_store(
 def load_vector_store(
     file_id
 ):
-
-    embedding = get_embedding()
 
     return FAISS.load_local(
         f"vectors/{file_id}",
