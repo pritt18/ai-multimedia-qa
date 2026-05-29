@@ -11,12 +11,10 @@ from app.services.vector_service import (
 
 load_dotenv()
 
-
 llm = ChatGroq(
     groq_api_key=os.getenv("GROQ_API_KEY"),
-    model_name="llama3-8b-8192"
+    model_name="llama-3.1-8b-instant"
 )
-
 
 def ask_question(
     file_id,
