@@ -5,9 +5,14 @@ from app.routes import upload
 from app.routes import chat
 from app.routes import summary
 from app.routes import timestamps
-
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
+app.mount(
+    "/uploads",
+    StaticFiles(directory="uploads"),
+    name="uploads"
+)
 
 
 # CORS CONFIGURATION
