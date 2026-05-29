@@ -263,7 +263,8 @@ Audio/Video → Whisper Transcription → Timestamp Extraction → FAISS → LLM
 
 ![alt text](TimestampSearch.png)
 
-<img width="1222" height="638" alt="image" src="https://github.com/user-attachments/assets/a4b7989d-fc37-4b93-adca-b1bb80397fe7" />
+<img width="1115" height="636" alt="image" src="https://github.com/user-attachments/assets/41693cf5-6609-4ca6-af17-19c0804e3951" />
+
 
 
 ---
